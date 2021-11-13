@@ -1,0 +1,25 @@
+<h3>会員一覧</h3>
+<div class="col-md-8 offset-md-1">
+  <table class="table table-hover table-inverse">
+  <thead>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+      <th colspan="3"></th>
+  </thead>
+
+    <% @customer.each do |customer| %>
+     <tr>
+      <td><%= customer.id %></td>
+      <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+      <td><%= customer.email %>
+      <td>
+        <% if customer.is_active == true %>
+        有効
+        <% else %>退会
+        <% end %>
+      </td>
+      <% end %>
+    </table>
+    </div>
